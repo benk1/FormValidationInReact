@@ -10,14 +10,16 @@ class AddUser extends React.Component{
         message : '',
         email: "",
         isSubmitDisabled: true,
+
         touched : {
             firstname : false,
             lastname : false,
             telephone : false,
             gender : false,
+            email:false,
             skill : '',
             message : '',
-            email:''
+            
         }
     }
 
@@ -33,8 +35,8 @@ handleBlur  = e =>{
 
 validate = (firstname , lastname, telephone, email) => {
 
-
     let errors = {
+
     firstName : '',
     lastName : '',
     telePhone : '',
@@ -71,7 +73,7 @@ if(!this.state.telephone || !( /^[0-9]{10}$/).test(telephone)){
 }
 
 if(!this.state.email || !(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/).test(email)){
-    errors.email = " Email must atleast contain @";
+    errors.email = " Invalid Email address";
     err+= 1
 }
 
@@ -85,6 +87,7 @@ return errors;
 
    
 handleChange = e => {
+    e.preventDefault();
     let target = e.target;
     let name = target.name;
     let value = target.type === 'checkbox' ? target.checked : target.value;
@@ -189,7 +192,8 @@ handleSubmit = e =>{
               />
             <br />
             <p>{errors.email}</p>
-            <div className="selector">
+    <div className="selector">
+        
             <label>Gender: </label>
             <label>Male</label>
             <input
@@ -216,19 +220,23 @@ handleSubmit = e =>{
                 onBlur = {this.handleBlur}
                 />
             <br />
-            <label>Skills</label>
             <br />
-            <select
+            
+             
+              <label>Skills:</label>
+            
+              <select
                 name="skill"
                 value={this.state.skill}
                 onChange={this.handleChange}
                 onBlur = {this.handleBlur}>
-            <option value="HTML">HTML</option>
-            <option value="CSS">CSS</option>
-            <option value="JavaScript">Java Script</option>
-            <option value = "React">React.js</option>
-            </select>
-            </div>
+              <option value="HTML">HTML</option>
+              <option value="CSS">CSS</option>
+              <option value="JavaScript">Java Script</option>
+              <option value = "React">React.js</option>
+              </select>
+        
+    </div>
                 
             <br />
             <label>Message : </label>

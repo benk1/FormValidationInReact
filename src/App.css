@@ -32,6 +32,14 @@
     border: 3px solid #ccc;
     outline: none !important;
     }
+    input::placeholder{
+      font-size: 1.2em;
+      font-weight: lighter;
+      color: #999;
+    }
+    input.error{
+      border: 1px solid red;
+    }
     /*.valid{
     border:2px solid green;
     border-color:#36cc36;
@@ -67,6 +75,8 @@
     outline: none;
     border:none;
     }
+
+   
 .submit-button {
     background:#3bd33b;
 }
